@@ -1,6 +1,6 @@
 name: async_var
-description: "AsyncVar is a lightweight and easy-to-use package that simplifies managing asynchronous state in Flutter applications. It provides a way to handle loading, success, and error states in a reactive manner, making it ideal for use in view models and state management. With built-in support for notifying listeners on state changes, AsyncVar helps you build responsive and clean Flutter apps with minimal boilerplate code."
-version: 1.0.0
+description: "Async Data, Loading notifier, Error all in one variable"
+version: 1.0.1
 repository: https://github.com/flexxxlab/async_var
 homepage:
 platforms:
