@@ -1,3 +1,2 @@
-## 0.0.1
-
-* TODO: Describe initial release.
+## 1.0.0
+Async function loading with its own error, loading start/stop, and data variable.
