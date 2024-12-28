@@ -34,7 +34,8 @@ class AsyncVar<T> extends ChangeNotifier {
 
   /// Executes the asynchronous operation, updates the loading state, and
   /// notifies listeners about the result or any error.
-  Future<void> doIt() async {
+  /// Returns the error message if any.
+  Future<String?> doIt() async {
     _loading = true;
     notifyListeners();
     try {
@@ -47,6 +48,7 @@ class AsyncVar<T> extends ChangeNotifier {
       _loading = false;
       notifyListeners();
     }
+    return _error;
   }
 
   /// Disposes the notifier and removes the listener from the parent notifier.

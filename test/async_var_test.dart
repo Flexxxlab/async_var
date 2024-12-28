@@ -39,7 +39,7 @@ void main() {
       expect(asyncVar.loading, isFalse);
 
       // Call doIt and check loading state
-      asyncVar.doIt();
+      final error = asyncVar.doIt();
       expect(asyncVar.loading, isTrue);
 
       // Wait for completion and check final state
@@ -47,6 +47,7 @@ void main() {
       expect(asyncVar.loading, isFalse);
       expect(asyncVar.data, mockResult);
       expect(asyncVar.error, isNull);
+      expect(await error, isNull);
     });
 
     test('doIt handles errors correctly', () async {
@@ -58,7 +59,7 @@ void main() {
       );
 
       // Call doIt and check loading state
-      asyncVar.doIt();
+      final error = asyncVar.doIt();
       expect(asyncVar.loading, isTrue);
 
       // Wait for completion and check final state
@@ -66,6 +67,7 @@ void main() {
       expect(asyncVar.loading, isFalse);
       expect(asyncVar.data, isNull);
       expect(asyncVar.error, contains(mockError));
+      expect(await error, contains(mockError));
     });
 
     test('notifies listeners on state changes', () async {
