@@ -6,3 +6,6 @@ Administrative updates
 
 ## 1.0.2
 Administrative updates
+
+## 1.0.3
+Error returned back on doit

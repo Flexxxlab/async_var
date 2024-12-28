@@ -1,6 +1,6 @@
 name: async_var
 description: "Async Data, Loading notifier, Error all in one variable, reducing boilerplate code and making your code more concise"
-version: 1.0.2
+version: 1.0.3
 repository: https://github.com/flexxxlab/async_var
 homepage:
 platforms:
