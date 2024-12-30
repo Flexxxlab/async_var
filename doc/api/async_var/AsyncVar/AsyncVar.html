@@ -57,8 +57,7 @@
 
     <section class="multi-line-signature">
       
-      <span class="name ">AsyncVar&lt;<wbr><span class="type-parameter">T</span>&gt;</span>(<wbr>{<ol class="parameter-list"> <li><span class="parameter" id="-param-operation"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">operation</span>(), </span></li>
-<li><span class="parameter" id="-param-parentNotifier"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/foundation/ChangeNotifier-class.html">ChangeNotifier</a></span> <span class="parameter-name">parentNotifier</span>, </span></li>
+      <span class="name ">AsyncVar&lt;<wbr><span class="type-parameter">T</span>&gt;</span>(<wbr>{<ol class="parameter-list"> <li><span class="parameter" id="-param-parentNotifier"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/foundation/ChangeNotifier-class.html">ChangeNotifier</a></span> <span class="parameter-name">parentNotifier</span>, </span></li>
 </ol>})
     </section>
     
@@ -71,7 +70,6 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">AsyncVar({
-  required this.operation,
   required this.parentNotifier,
 }) {
   addListener(parentNotifier.notifyListeners);
@@ -103,7 +101,7 @@
 <footer>
   <span class="no-break">
     async_var
-      1.0.1
+      1.0.3
   </span>
   
 </footer>

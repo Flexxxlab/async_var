@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the doIt method from the AsyncVar class, for the Dart programming language.">
-  <title>doIt method - AsyncVar class - async_var library - Dart API</title>
+  <meta name="description" content="API docs for the executeTask method from the AsyncVar class, for the Dart programming language.">
+  <title>executeTask method - AsyncVar class - async_var library - Dart API</title>
 
 
   
@@ -27,9 +27,9 @@
     <li><a href="../../index.html">async_var</a></li>
     <li><a href="../../async_var/async_var-library.html">async_var.dart</a></li>
     <li><a href="../../async_var/AsyncVar-class.html">AsyncVar<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></a></li>
-    <li class="self-crumb">doIt method</li>
+    <li class="self-crumb">executeTask method</li>
   </ol>
-  <div class="self-name">doIt</div>
+  <div class="self-name">executeTask</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -52,13 +52,14 @@
     data-above-sidebar="async_var&#47;AsyncVar-class-sidebar.html"
     data-below-sidebar="">
     <div>
-<h1><span class="kind-method">doIt</span> method 
+<h1><span class="kind-method">executeTask</span> method 
 </h1></div>
 
     <section class="multi-line-signature">
       
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
-<span class="name ">doIt</span>(<wbr>)
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>&gt;</span></span>
+<span class="name ">executeTask</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="executeTask-param-operation"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">operation</span>()</span></li>
+</ol>)
 
       
 
@@ -66,14 +67,16 @@
     
 <section class="desc markdown">
   <p>Executes the asynchronous operation, updates the loading state, and
-notifies listeners about the result or any error.</p>
+notifies listeners about the result or any error.
+Parameters: <code>operation</code> - The asynchronous operation to execute.
+Returns the error message if any.</p>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; executeTask() async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;String?&gt; executeTask(Future&lt;T&gt; Function() operation) async {
   _loading = true;
   notifyListeners();
   try {
@@ -86,6 +89,7 @@ notifies listeners about the result or any error.</p>
     _loading = false;
     notifyListeners();
   }
+  return _error;
 }</code></pre>
 </section>
 
@@ -102,7 +106,7 @@ notifies listeners about the result or any error.</p>
     <li><a href="../../index.html">async_var</a></li>
     <li><a href="../../async_var/async_var-library.html">async_var</a></li>
     <li><a href="../../async_var/AsyncVar-class.html">AsyncVar<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></a></li>
-    <li class="self-crumb">doIt method</li>
+    <li class="self-crumb">executeTask method</li>
 </ol>
 
     <h5>AsyncVar class</h5>
@@ -114,7 +118,7 @@ notifies listeners about the result or any error.</p>
 <footer>
   <span class="no-break">
     async_var
-      1.0.1
+      1.0.3
   </span>
   
 </footer>

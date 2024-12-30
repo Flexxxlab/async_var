@@ -54,13 +54,11 @@ class EventListViewModel extends ChangeNotifier {
 
   late final AsyncVar<List<EventGet>> _hostedEvents;
   List<EventGet> get hostedEvents => _hostedEvents.data ?? [];
-
+  Future<void> getEvents() => _hostedEvents.executeTask(() => service.getHostedEvents());
+  
   EventListViewModel(this.service) {
-    _hostedEvents = AsyncVar<List<EventGet>>(
-      operation: () async => service.getHostedEvents(),
-      parentNotifier: this,
-    );
-    _hostedEvents.doIt();
+    _hostedEvents = AsyncVar<List<EventGet>>(parentNotifier: this);
+    getEvents();
   }
 }
 ```
@@ -72,11 +70,11 @@ class EventListViewModel extends ChangeNotifier {
 
 ## Setup:
 1. Add AsyncVar to your project by copying the class definition.
-2. Initialize AsyncVar in your ViewModel and call `doIt()` to perform the asynchronous operation.
+2. Initialize AsyncVar in your ViewModel and call `executeTask()` to perform the asynchronous operation.
 3. Access the loading, error, and data properties directly from the AsyncVar instance in your ViewModel.
 
 ## Methods:
-- **doIt()**: Starts the asynchronous operation and updates the state (loading, data, error).
+- **executeTask()**: Starts the asynchronous operation and updates the state (loading, data, error).
 - **data**: The result of the asynchronous operation.
 - **loading**: Indicates whether the operation is still in progress.
 - **error**: Holds the error message if the operation fails.

@@ -9,3 +9,6 @@ Administrative updates
 
 ## 1.0.3
 Error returned back on doit
+
+## 1.1.0
+action method removed from init. it is coupled with the execute method

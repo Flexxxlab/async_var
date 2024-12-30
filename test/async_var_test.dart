@@ -17,7 +17,6 @@ void main() {
 
     test('initial state is correct', () {
       asyncVar = AsyncVar<int>(
-        operation: () async => mockResult,
         parentNotifier: ChangeNotifier(),
       );
 
@@ -28,10 +27,6 @@ void main() {
 
     test('doIt updates loading state correctly', () async {
       asyncVar = AsyncVar<int>(
-        operation: () async {
-          await Future.delayed(Duration(milliseconds: 100));
-          return mockResult;
-        },
         parentNotifier: ChangeNotifier(),
       );
 
@@ -39,7 +34,10 @@ void main() {
       expect(asyncVar.loading, isFalse);
 
       // Call doIt and check loading state
-      final error = asyncVar.doIt();
+      final error = asyncVar.executeTask(() async {
+        await Future.delayed(Duration(milliseconds: 100));
+        return mockResult;
+      });
       expect(asyncVar.loading, isTrue);
 
       // Wait for completion and check final state
@@ -52,14 +50,13 @@ void main() {
 
     test('doIt handles errors correctly', () async {
       asyncVar = AsyncVar<int>(
-        operation: () async {
-          throw Exception(mockError);
-        },
         parentNotifier: ChangeNotifier(),
       );
 
       // Call doIt and check loading state
-      final error = asyncVar.doIt();
+      final error = asyncVar.executeTask(() async {
+        throw Exception(mockError);
+      });
       expect(asyncVar.loading, isTrue);
 
       // Wait for completion and check final state
@@ -72,7 +69,6 @@ void main() {
 
     test('notifies listeners on state changes', () async {
       asyncVar = AsyncVar<int>(
-        operation: () async => mockResult,
         parentNotifier: ChangeNotifier(),
       );
 
@@ -82,7 +78,7 @@ void main() {
       });
 
       // Call doIt and verify listener is called
-      asyncVar.doIt();
+      asyncVar.executeTask(() async => mockResult);
       await Future.delayed(Duration(milliseconds: 150));
 
       expect(listenerCalled, isTrue);
@@ -90,7 +86,6 @@ void main() {
 
     test('removes listeners correctly', () {
       asyncVar = AsyncVar<int>(
-        operation: () async => mockResult,
         parentNotifier: ChangeNotifier(),
       );
 
@@ -103,7 +98,7 @@ void main() {
       asyncVar.removeListener(listener);
 
       // Call doIt and verify listener is not called
-      asyncVar.doIt();
+      asyncVar.executeTask(() async => mockResult);
       expect(listenerCalled, isFalse);
     });
   });

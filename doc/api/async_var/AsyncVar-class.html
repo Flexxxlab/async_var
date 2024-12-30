@@ -90,7 +90,7 @@ the loading state, data, and errors.</p>
     <h2>Constructors</h2>
     <dl class="constructor-summary-list">
         <dt id="AsyncVar" class="callable">
-          <span class="name"><a href="../async_var/AsyncVar/AsyncVar.html">AsyncVar</a></span><span class="signature">({<span class="parameter" id="-param-operation"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">operation</span>(), </span><span class="parameter" id="-param-parentNotifier"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/foundation/ChangeNotifier-class.html">ChangeNotifier</a></span> <span class="parameter-name">parentNotifier</span></span>})</span>
+          <span class="name"><a href="../async_var/AsyncVar/AsyncVar.html">AsyncVar</a></span><span class="signature">({<span class="parameter" id="-param-parentNotifier"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/foundation/ChangeNotifier-class.html">ChangeNotifier</a></span> <span class="parameter-name">parentNotifier</span></span>})</span>
         </dt>
         <dd>
           Creates an instance of <a href="../async_var/AsyncVar-class.html">AsyncVar</a> with the given <code>operation</code> and <code>parentNotifier</code>.
@@ -163,18 +163,6 @@ the loading state, data, and errors.</p>
 
 </dd>
 
-        <dt id="operation" class="property">
-  <span class="name"><a href="../async_var/AsyncVar/operation.html">operation</a></span>
-  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span> Function<span class="signature">()</span></span>
-  
-
-</dt>
-<dd>
-  The asynchronous operation to be performed.
-  <div class="features"><span class="feature">final</span></div>
-
-</dd>
-
         <dt id="parentNotifier" class="property">
   <span class="name"><a href="../async_var/AsyncVar/parentNotifier.html">parentNotifier</a></span>
   <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/foundation/ChangeNotifier-class.html">ChangeNotifier</a></span>
@@ -234,9 +222,9 @@ the loading state, data, and errors.</p>
 
 </dd>
 
-        <dt id="doIt" class="callable">
-  <span class="name"><a href="../async_var/AsyncVar/doIt.html">doIt</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+        <dt id="executeTask" class="callable">
+  <span class="name"><a href="../async_var/AsyncVar/executeTask.html">executeTask</a></span><span class="signature">(<wbr><span class="parameter" id="executeTask-param-operation"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">operation</span>()</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>&gt;</span></span>
   </span>
   
 
@@ -244,6 +232,8 @@ the loading state, data, and errors.</p>
 <dd>
   Executes the asynchronous operation, updates the loading state, and
 notifies listeners about the result or any error.
+Parameters: <code>operation</code> - The asynchronous operation to execute.
+Returns the error message if any.
   
 
 </dd>
@@ -351,7 +341,7 @@ notified when the object changes.
 <footer>
   <span class="no-break">
     async_var
-      1.0.1
+      1.0.3
   </span>
   
 </footer>

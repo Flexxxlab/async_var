@@ -18,15 +18,11 @@ class AsyncVar<T> extends ChangeNotifier {
   /// Stores the result of the asynchronous operation.
   T? get data => _data;
 
-  /// The asynchronous operation to be performed.
-  final Future<T> Function() operation;
-
   /// A parent notifier to notify when this notifier changes.
   final ChangeNotifier parentNotifier;
 
   /// Creates an instance of [AsyncVar] with the given [operation] and [parentNotifier].
   AsyncVar({
-    required this.operation,
     required this.parentNotifier,
   }) {
     addListener(parentNotifier.notifyListeners);
@@ -34,8 +30,9 @@ class AsyncVar<T> extends ChangeNotifier {
 
   /// Executes the asynchronous operation, updates the loading state, and
   /// notifies listeners about the result or any error.
+  /// Parameters: [operation] - The asynchronous operation to execute.
   /// Returns the error message if any.
-  Future<String?> doIt() async {
+  Future<String?> executeTask(Future<T> Function() operation) async {
     _loading = true;
     notifyListeners();
     try {
