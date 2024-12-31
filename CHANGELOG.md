@@ -12,3 +12,6 @@ Error returned back on doit
 
 ## 1.1.0
 action method removed from init. it is coupled with the execute method
+
+## 1.1.1
+operations are now cancellable
