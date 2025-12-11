@@ -1,6 +1,6 @@
 name: async_var
 description: "Async Data, Loading notifier, Error all in one variable, reducing boilerplate code and making your code more concise"
-version: 1.1.1
+version: 1.1.2
 repository: https://github.com/flexxxlab/async_var
 homepage: https://us.flexxxlab.com/
 platforms:
@@ -12,8 +12,8 @@ platforms:
   windows:
   
 environment:
-  sdk: ^3.6.0
-  flutter: ">=1.17.0"
+  sdk: ^3.10.3
+  flutter: ">=2.51.1"
 
 dependencies:
   flutter:
@@ -23,6 +23,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 flutter:
+  generate: true

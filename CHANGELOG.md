@@ -15,3 +15,6 @@ action method removed from init. it is coupled with the execute method
 
 ## 1.1.1
 operations are now cancellable
+
+## 1.1.2
+dependency update
