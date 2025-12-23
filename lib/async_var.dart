@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:async/async.dart';
 
+import 'custom_exception.dart';
+
 /// A class that manages asynchronous operations and notifies listeners about
 /// the loading state, data, and errors.
 /// Operations can be cancelled using the [cancelOperation] method.
@@ -8,6 +10,7 @@ class AsyncVar<T> extends ChangeNotifier {
   final ChangeNotifier _parentNotifier;
   bool _loading = false;
   String? _error;
+  CustomException? _customException;
   T? _data;
   CancelableOperation? _operation;
 
@@ -20,11 +23,13 @@ class AsyncVar<T> extends ChangeNotifier {
   /// Stores the result of the asynchronous operation.
   T? get data => _data;
 
+  /// Stores the custom exception that occurs during the asynchronous operation.
+  CustomException? get customException => _customException;
+
   /// Creates an instance of [AsyncVar] with the given [operation] and [parentNotifier].
   /// A parent notifier to notify when this notifier changes.
-  AsyncVar({
-    required ChangeNotifier parentNotifier,
-  }) : _parentNotifier = parentNotifier {
+  AsyncVar({required ChangeNotifier parentNotifier})
+    : _parentNotifier = parentNotifier {
     addListener(_parentNotifier.notifyListeners);
   }
 
@@ -48,7 +53,11 @@ class AsyncVar<T> extends ChangeNotifier {
       final result = await _operation?.value;
       _data = result;
       _error = null;
+      _customException = null;
     } catch (e) {
+      if (e is CustomException) {
+        _customException = e;
+      }
       _error = e.toString();
     } finally {
       _loading = false;
