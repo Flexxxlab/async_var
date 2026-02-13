@@ -86,4 +86,4 @@ AsyncVar simplifies asynchronous state management by consolidating loading, erro
 ## Additional information
 
 - Contributions: Contributions are welcome! Open an issue or submit a pull request.
-- issues: If you encounter any issues, please feel free to reach out to **Email:** irshad365@flexxxlab.com
+- issues: If you encounter any issues, please feel free to reach out to **Email:** helpdesk@flexxxlab.com

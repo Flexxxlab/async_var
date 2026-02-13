@@ -19,5 +19,8 @@ operations are now cancellable
 ## 1.1.2
 dependency update
 
+## 1.1.4
+Bug fixes and improvements
+
 ## 1.1.3
 CustomException with status and details added

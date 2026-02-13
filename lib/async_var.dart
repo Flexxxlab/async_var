@@ -78,3 +78,27 @@ class AsyncVar<T> extends ChangeNotifier {
     _operation?.cancel();
   }
 }
+
+/// Retries a [futureFunction] up to [maxRetries] times with a 1-second delay between attempts.
+/// Throws an exception if all retries fail.
+Future<T> retry<T>(
+  Future<T> Function() futureFunction, {
+  int maxRetries = 3,
+}) async {
+  int attempt = 0;
+
+  while (attempt < maxRetries) {
+    try {
+      return await futureFunction();
+    } catch (e) {
+      attempt++;
+      if (attempt == maxRetries) {
+        throw Exception('Failed after $maxRetries attempts: $e');
+      }
+      // Add a delay before retrying
+      await Future.delayed(Duration(seconds: 1));
+    }
+  }
+
+  throw Exception('Unexpected error: retry logic failed');
+}
