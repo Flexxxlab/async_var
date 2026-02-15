@@ -77,6 +77,14 @@ class AsyncVar<T> extends ChangeNotifier {
   void cancelOperation() {
     _operation?.cancel();
   }
+
+  /// Clears the data, setting it to null along with error states.
+  void clear() {
+    _data = null;
+    _error = null;
+    _customException = null;
+    notifyListeners();
+  }
 }
 
 /// Retries a [futureFunction] up to [maxRetries] times with a 1-second delay between attempts.
