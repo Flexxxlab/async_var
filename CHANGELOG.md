@@ -1,3 +1,6 @@
+## 1.1.7
+Bug fixes and improvements
+
 ## 1.1.6
 Added extendedLoading option for minimum loading duration
 

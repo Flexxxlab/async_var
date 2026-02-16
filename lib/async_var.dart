@@ -62,6 +62,7 @@ class AsyncVar<T> extends ChangeNotifier {
       _error = e.toString();
     } finally {
       if (extendedLoading != null) {
+        notifyListeners();
         await Future.delayed(extendedLoading!);
       }
       _loading = false;
