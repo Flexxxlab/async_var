@@ -13,6 +13,7 @@ class AsyncVar<T> extends ChangeNotifier {
   CustomException? _customException;
   T? _data;
   CancelableOperation? _operation;
+  Duration? extendedLoading;
 
   /// Indicates whether the asynchronous operation is currently loading.
   bool get loading => _loading;
@@ -60,6 +61,9 @@ class AsyncVar<T> extends ChangeNotifier {
       }
       _error = e.toString();
     } finally {
+      if (extendedLoading != null) {
+        await Future.delayed(extendedLoading!);
+      }
       _loading = false;
       notifyListeners();
     }
